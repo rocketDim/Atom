@@ -1,4 +1,5 @@
 // Игра 
+
 const getRandomNumInRange = (min, max) => {
     const randomNum = (Math.random() * (max - min) + min).toFixed(0)
     return randomNum
@@ -29,7 +30,7 @@ const gameState = {
 btnGame.onclick = () => {
     if (!gameState.taskInProgress) {
         title.innerText = "Игра началась!"
-        userAnswer.value = 0
+        userAnswer.value = null
         userTask.innerText = getTask() // генерируем задачу и ответ
         userAnswer.hidden = false
         btnGame.innerText = "Проверить!"
@@ -41,5 +42,7 @@ btnGame.onclick = () => {
         btnGame.innerText = "Начать заново!"
         gameState.taskInProgress = false
     }
+    toggIeGameState()
+    btnGame.innerText = (gameState.taskInProgress) ? "Проверить!" : "Начать заново!"
 }
 
